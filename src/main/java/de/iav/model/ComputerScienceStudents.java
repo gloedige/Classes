@@ -39,7 +39,6 @@ public class ComputerScienceStudents extends Student implements Citizen{
     @Override
     public String toString() {
         return "ComputerScienceStudents{" +
-                "gender='" + gender + '\'' +
-                '}';
+                "gender='" + gender + " Student {" + super.toString() + "}";
     }
 }
