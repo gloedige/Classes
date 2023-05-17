@@ -4,7 +4,9 @@ import de.iav.model.*;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
@@ -27,22 +29,15 @@ public class Main {
         Student zied = new ComputerScienceStudents(6543, 35, "Zied", "JavaCourse", "female");
         Student sergej = new ComputerScienceStudents(5544, 25, "sergej", "MasterCouch", "male");
 
-        ArrayList<Student> studentsArray = new ArrayList<>();
-        studentsArray.add(zied); //new Student(34566, 34, "Zied", "JavaCourse");
-        studentsArray.add(houman);//new Student(34568, 34, "Houman", "Java");
-        studentsArray.add(sergej);//new Student(34567, 40, "Gerd", "JavaBootcamp");
+        HashMap<Integer, Student> studentsArray = new HashMap<>();
+        studentsArray.put(6543, zied);
+        studentsArray.put(23456, houman);
+        studentsArray.put(5544, sergej);
 
         System.out.println(studentsArray.toString());
+        System.out.println("The stundent with number: " +zied.getId() + " is " + studentsArray.get(6543));
 
         StudentDB studentDB = new StudentDB(studentsArray);
-        try{
-            System.out.println(studentDB.findById(2));
-        }
-
-            catch(StudentNotFoundException e){
-                System.out.println(e.getMessage());
-        }
-
 
         //System.out.println(studentDB);
 

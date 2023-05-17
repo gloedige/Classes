@@ -1,37 +1,45 @@
 package de.iav.model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class StudentDB {
-    private ArrayList<Student> students;
+    private HashMap<Integer, Student> students;
 
-    public StudentDB(ArrayList<Student> students) {
+    public StudentDB(HashMap<Integer, Student> students) {
         this.students = students;
     }
 
-    public ArrayList<Student> getStudents() {
+    public HashMap<Integer, Student> getStudents() {
         return students;
     }
 
-    public void setStudents(ArrayList<Student> students) {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        StudentDB studentDB = (StudentDB) o;
+
+        return Objects.equals(students, studentDB.students);
+    }
+
+    @Override
+    public int hashCode() {
+        return students != null ? students.hashCode() : 0;
+    }
+
+    public void setStudents(HashMap<Integer, Student> students) {
         this.students = students;
     }
 
-    public Student findById(int idToFind) throws StudentNotFoundException {
-        for (Student student : students) {
-            if (student.getId() == idToFind) {
-                return student;
-            }
-        }
-        throw new StudentNotFoundException();//("ID:" + idToFind); // hier ist die message
+    public Student findById(int idToFind) {
+        return this.students.get(idToFind);
     }
 
     @Override
     public String toString() {
         return "StudentDB{" +
-                "students=" + students.toString() +
+                "students=" + students +
                 '}';
     }
 }
